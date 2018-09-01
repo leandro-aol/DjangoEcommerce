@@ -1,5 +1,5 @@
-# ProjetoFinal
-Projeto final do curso de Django e Python (Programe Fácil / Udemy)
+# DjangoEcommerce
+Projeto de Ecommerce usando Django e Python (Udemy)
 
 ## Criar o diretório do projeto
 * mkdir [nome-da-pasta]
@@ -14,6 +14,7 @@ Projeto final do curso de Django e Python (Programe Fácil / Udemy)
 
 ### [2] Criando o repositório Git
 * git init
+* `git remote add [nome] [url]`
 * Crie o arquivo `.gitignore` com o seguinte conteúdo:
 ```
 # See the name for you IDE
