@@ -6,15 +6,11 @@ Projeto de Ecommerce usando Django e Python (Udemy)
 * cd [nome-da-pasta]
 
 ## Git
-### [1] Clonar um projeto Git
+### Clonar um projeto Git
 * Ctrl + Shift + P
 * clone
 * "url do diretório"
 * Escolha a pasta para o projeto
-
-### [2] Criando o repositório Git
-* git init
-* `git remote add [nome] [url]`
 * Crie o arquivo `.gitignore` com o seguinte conteúdo:
 ```
 # See the name for you IDE
@@ -27,8 +23,6 @@ Projeto de Ecommerce usando Django e Python (Udemy)
 venv
 *pyc
 ```
-* git add .
-* git commit -m 'Primeiro commit'
 
 ## Habilitar a execução de scripts no processo atual
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -39,6 +33,15 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
 ## Atualizando o pip
 python -m pip install --upgrade pip
+
+## Instalando o PyLint
+* pip install pylint-django
+* Adicione nas configurações de usuário do VSCode
+```
+"python.linting.pylintArgs": [
+    "--load-plugins=pylint_django"
+],
+```
 
 ## Instalando o Django
 pip install django
@@ -51,23 +54,15 @@ _O ponto no final da linha é para impedir a criação de uma subpasta com o nom
 * `python manage.py createsuperuser` : para criar um super usuário
 
 * `python manage.py startapp [nome-do-app]` : criar uma app
+_.\manage.py startapp core_
 
 * `python manage.py makemigrations` : identifica as alterações a serem feitas no banco
 * `python manage.py migrate` : realiza estas alterações
 * `python manage.py runserver` : executa o servidor da aplicação
 
-## Instalando o PyLint
-* pip install pylint-django
-* Adicione nas configurações de usuário do VSCode
-```
-"python.linting.pylintArgs": [
-    "--load-plugins=pylint_django"
-],
-```
-
 *******
 
-## Fazendo deploy no Heroku
+# Fazendo deploy no Heroku
 **[*Heroku*](https://www.heroku.com)**
 **[*Django-Heroku*](https://github.com/gpzim98/django-heroku)**
 
@@ -101,6 +96,10 @@ pip install dj-static
 
 ### Settings.py
 * STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+* STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 ## Crie na raiz do projeto
 1. requirements-dev.txt
@@ -146,6 +145,21 @@ _Você deve estar dentro da pasta onde o arquivo *.env* está_
 
 ## Criando o usuário admin do Django
 * heroku run python manage.py createsuperuser
+
+*******
+
+# Testes
+
+## Criar pasta de Teste
+* Criar a pasta `tests` dentro de cada aplicação a ser testada
+* Criar o arquivo `__init.py__`
+* Criar os arquivos de teste `test_[o-que-testar].py`
+_test_views.py_
+
+* Delete o arquivo tests.py da pasta da aplicação
+
+## Executando os Testes
+.\manage.py test
 
 *******
 
