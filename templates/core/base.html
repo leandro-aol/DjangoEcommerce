@@ -10,10 +10,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 
-    <title>{% block title %}Django E-Commerce{% endblock %}
-    </title>
+    <title>{% block title %}Django E-Commerce{% endblock %}</title>
 </head>
-<body>
+<body id="topo">
     <div class="container">
         <!-- Menu de Navegação -->
         <div class="row">
@@ -49,7 +48,7 @@
                     
                             <ul class="navbar-nav navbar-right">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">Minha Conta</a>
+                                    <a class="nav-link" href="#">Minha Conta</a>
                                 </li>
                             </ul>
                         </div>
@@ -68,12 +67,12 @@
                 <footer id="footer">
                     <nav class="navbar">
                         <ul class="list-unstyled" style="width:100%">
-                            <li class="float-right"><a href="#top">Voltar ao Topo</a></li>
+                            <li class="float-right"><a class="nav-link" href="#topo">Voltar ao Topo</a></li>
                             
-                            <li><a href="">Início</a></li>
-                            <li><a href="">Produtos</a></li>
-                            <li><a href="">Contato</a></li>
-                            <li><a href="">Termos e Privacidade</a></li>
+                            <li><a class="nav-link" href="#">Início</a></li>
+                            <li><a class="nav-link" href="#">Produtos</a></li>
+                            <li><a class="nav-link" href="#">Contato</a></li>
+                            <li><a class="nav-link" href="#">Termos e Privacidade</a></li>
                         </ul>
                     </nav>
                 </footer id="footer">
