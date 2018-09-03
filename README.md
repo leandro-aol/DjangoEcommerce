@@ -111,7 +111,8 @@ pip install dj-static
 * psycopg2
 
 3. Procfile
-* web: gunicorn website.wsgi --log-file -
+* web: gunicorn [nome-da-app].wsgi --log-file -
+_nome da app da url padrão '/'_
 
 4. runtime.txt
 * python-3.7.0
