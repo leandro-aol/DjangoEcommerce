@@ -122,7 +122,7 @@ pip install dj-static
 _Nesta etapa, lembre-se de pegar o endereço da aplicação!_
 
 ## Configure o ALLOWED_HOSTS
-Inclua o endereço do seu app no Heroku na variável *ALLOWED_HOSTS* no arquivo *settings.py*
+Inclua o endereço do seu app do Heroku na variável *ALLOWED_HOSTS* no arquivo *settings.py*
 Inclua *apenas o domínio*. Retire a parte do _protocolo_ e as _barras_
 
 ## Instale o plugin de configuração do Heroku
@@ -130,7 +130,7 @@ Inclua *apenas o domínio*. Retire a parte do _protocolo_ e as _barras_
 
 ### Enviando o arquivo `.env` para o Heroku
 _Você deve estar dentro da pasta onde o arquivo *.env* está_
-* heroku config:push -a
+* heroku config:push
 
 ### Para ver as configurações do Heroku
 * heroku config
