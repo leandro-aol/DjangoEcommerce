@@ -19,6 +19,7 @@ from django.urls import path, include
 from .views import (
     products,
     category,
+    product,
 )
 
 app_name = 'catalog'
@@ -26,4 +27,5 @@ app_name = 'catalog'
 urlpatterns = [
     path('', products, name='products'),
     path('<slug:slug>/', category, name='category'),
+    path('produtos/<slug:slug>/', product, name='product'),
 ]

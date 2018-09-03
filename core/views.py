@@ -6,6 +6,3 @@ def index(request):
 
 def contact(request):
     return render(request, 'core/contact.html')
-
-def product(request):
-    return render(request, 'core/product.html')

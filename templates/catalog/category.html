@@ -17,14 +17,16 @@
         {% for product in products %}
             <div class="col-sm-4">
                 <div class="img-thumbnail">
-                    <img src="http://placehold.it/350x250" class="img-fluid" alt="Responsive image">
+                    <a href="{{ product.get_absolute_url }}">
+                        <img src="http://placehold.it/350x250" class="img-fluid" alt="Responsive image">
+                    </a>
                     
                     <div class="caption">
                         <h3>{{ product }}</h3>
                         <p>{{ product.description|linebreaks }}</p>
                         
                         <p>
-                            <a href="#" class="btn btn-info" role="button">Button</a>
+                            <a href="{{ product.get_absolute_url }}" class="btn btn-info" role="button">Mais detalhes</a>
                             <a href="#" class="btn btn-dark" role="button">Button</a>
                         </p>
                     </div>

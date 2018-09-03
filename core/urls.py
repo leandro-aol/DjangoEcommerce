@@ -19,7 +19,6 @@ from django.urls import path
 from .views import (
     index,
     contact,
-    product,
 )
 
 app_name = 'core'
@@ -27,5 +26,4 @@ app_name = 'core'
 urlpatterns = [
     path('', index, name="index"),
     path('contato/', contact, name='contact'),
-    path('produto/', product, name='product'),
 ]

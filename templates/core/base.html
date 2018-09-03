@@ -35,6 +35,8 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
                                     
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{% url 'catalog:products' %}">* TODOS *</a>
+
                                         {% for category in categories %}
                                             <a class="dropdown-item" href="{{ category.get_absolute_url }}">{{ category }}</a>
                                         {% endfor %}

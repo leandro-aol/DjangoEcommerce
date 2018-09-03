@@ -151,7 +151,8 @@ _Você deve estar dentro da pasta onde o arquivo *.env* está_
 
 # Testes
 
-## Criar pasta de Teste
+## Com o arquivo tests do Django
+### Criar pasta de Teste
 * Criar a pasta `tests` dentro de cada aplicação a ser testada
 * Criar o arquivo `__init.py__`
 * Criar os arquivos de teste `test_[o-que-testar].py`
@@ -159,8 +160,17 @@ _test_views.py_
 
 * Delete o arquivo tests.py da pasta da aplicação
 
-## Executando os Testes
+### Executando os Testes
 .\manage.py test
+
+## Com o **[Model Mommy](model-mommy.readthedocs.io)**
+Testa models e views
+
+### Instalando
+`pip install model_mommy`
+
+### Executando os Testes
+.\manage.py test [nome-da-app]
 
 *******
 

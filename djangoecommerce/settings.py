@@ -139,4 +139,4 @@ STATICFILES_DIRS = [
 
 #LOGIN_URL = 'login'
 #LOGIN_REDIRECT_URL = 'core_index'
-LOGOUT_REDIRECT_URL = 'core_index'
+LOGOUT_REDIRECT_URL = 'core:index'
