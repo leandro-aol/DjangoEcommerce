@@ -28,21 +28,21 @@
                         <div class="collapse navbar-collapse" id="navbarMain">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'core_index' %}">Início</a>
+                                    <a class="nav-link" href="{% url 'core:index' %}">Início</a>
                                 </li>
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
                                     
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{% url 'core_produtos' %}">Notebooks</a>
-                                        <a class="dropdown-item" href="{% url 'core_produtos' %}">Acessórios</a>
-                                        <a class="dropdown-item" href="{% url 'core_produtos' %}">Celulares</a>
+                                        {% for category in categories %}
+                                            <a class="dropdown-item" href="{{ category.get_absolute_url }}">{{ category }}</a>
+                                        {% endfor %}
                                     </div>
                                 </li>
                     
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'core_contato' %}">Contato</a>
+                                    <a class="nav-link" href="{% url 'core:contact' %}">Contato</a>
                                 </li>
                             </ul>
                     

@@ -17,5 +17,17 @@ footer li {
 }
 
 footer a {
-    color: #18BC9C;
+    color: #18BC9C
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white
+}
+
+.dropdown-item:active {
+    background-color: #343a40
+}
+
+.dropdown-item:hover {
+    background-color: #e7e8e9
 }

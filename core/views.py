@@ -4,11 +4,8 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'core/index.html')
 
-def contato(request):
-    return render(request, 'core/contato.html')
+def contact(request):
+    return render(request, 'core/contact.html')
 
-def produto(request):
-    return render(request, 'core/produto.html')
-
-def produtos(request):
-    return render(request, 'core/produtos.html')
+def product(request):
+    return render(request, 'core/product.html')

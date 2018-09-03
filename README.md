@@ -194,3 +194,49 @@ Para acessar alguma view, ela deve ser mapeada no urls.py
 * `git remote add [nome] [url]` : para adicionar um repositório remoto
 * `git push [nome-remote] [branch]` : fazer um pushing para o remote/branch
 * `git remote show _[nome-remote]_` : inspecionar um repositório
+
+## Instalando o iPython
+Ferramenta que facilita a utilização do shell
+`pip install ipython`
+`.\manage.py shell`
+
+## Painel do Admin
+
+### Adicionando a Tabela
+* Em admin.py
+```
+from .models import [nome-do-model]
+admin.site.registr([nome-do-model]
+```
+
+### Alterando o nome da Aplicação
+* Em apps.py, na class [nome-da-app]Config
+`verbose_name = '[nome-desejado]'`
+* Em __init__.py
+`default_app_config = '[nome-da-app].apps.[nome-da-app]Config'`
+
+## Templates
+Quando é necessário que uma variável esteja disponivel em todos os templates, devemos fazer o seguinte:
+1. Dentro da pasta da aplicação, criar o arquivo context_processors.py
+2. Neste arquivo, insira o seguinte código
+```
+from .models import [nome-da-tabela]
+
+def [nome-da-variavel](request):
+    return {
+        '[nome-da-variavel]' : [nome-da-tabela].objects.all()
+    }
+```
+3. Em settings.py, TEMPLATES, OPTIONS, context_processors, adicione o caminho da função criada:
+```
+# apps
+'[nome-da-app].context_processors.[nome-da-função]',
+```
+
+## Chamando URL por Categoria
+* Após criar o método get_absolute_url dentro do models.py
+```
+<a class="dropdown-item" href="{% url 'catalog:category' slug=category.slug %}">{{ category }}</a>
+
+<a class="dropdown-item" href="{{ category.get_absolute_url }}">{{ category }}</a>
+```

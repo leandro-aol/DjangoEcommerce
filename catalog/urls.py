@@ -16,8 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from .views import (
+    products,
+    category,
+)
+
+app_name = 'catalog'
+
 urlpatterns = [
-    path('', include('core.urls', namespace='core')),
-    path('produtos/', include('catalog.urls', namespace='catalog')),
-    path('admin/', admin.site.urls, name='admin'),
+    path('', products, name='products'),
+    path('<slug:slug>/', category, name='category'),
 ]
