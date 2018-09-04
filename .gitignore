@@ -7,3 +7,9 @@
 # Name of your virtuan env
 venv
 *pyc
+
+# Local settings file
+local_settings.py
+
+# Jupyter files
+*.ipynb

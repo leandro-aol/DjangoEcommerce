@@ -44,7 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # libs
+    'widget_tweaks',
     
+    # apps
     'core',
     'catalog',
 ]
@@ -140,3 +144,14 @@ STATICFILES_DIRS = [
 #LOGIN_URL = 'login'
 #LOGIN_REDIRECT_URL = 'core_index'
 LOGOUT_REDIRECT_URL = 'core:index'
+
+# E-mail config
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = 'admin@ecodjango.com'
+
+try:
+    from local_settings import *
+except ImportError:
+    pass

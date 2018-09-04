@@ -22,6 +22,12 @@ Projeto de Ecommerce usando Django e Python (Udemy)
 # Name of your virtuan env
 venv
 *pyc
+
+# Local settings file
+local_settings.py
+
+# Jupyter files
+*.ipynb
 ```
 
 ## Habilitar a execução de scripts no processo atual
@@ -71,7 +77,7 @@ _.\manage.py startapp core_
 * Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
 - `SECRET_KEY=[Your-Secret-Key-Here]`
 _Pegue a SECRET_KEY do arquivo settings.py_
-- `DEBUG=True`
+- `DEBUG=False`
 
 ### Settings.py
 * from decouple import config
@@ -164,7 +170,7 @@ _test_views.py_
 .\manage.py test
 
 ## Com o **[Model Mommy](model-mommy.readthedocs.io)**
-Testa models e views
+Para ajudar no teste de models e views
 
 ### Instalando
 `pip install model_mommy`
@@ -182,8 +188,13 @@ Testa models e views
 ## Alterando uma configuração específica
 * heroku config:set DEBUG=True
 
-## Ferramenta para trabalhar com formulário Bootstrap/Django
-pip install django-bootstrap-form
+## Formulários
+
+### Ferramenta para trabalhar com formulário Bootstrap/Django
+`pip install django-bootstrap-form`
+
+### Outra ferramenta para trabalar com formulários
+`pip install django-widget-tweaks`
 
 ## CRUD
 * Create
@@ -206,9 +217,16 @@ Para acessar alguma view, ela deve ser mapeada no urls.py
 * `git remote show _[nome-remote]_` : inspecionar um repositório
 
 ## Instalando o iPython
-Ferramenta que facilita a utilização do shell
+Um console python melhorado. Ferramenta que facilita a utilização do shell.
 `pip install ipython`
 `.\manage.py shell`
+
+### Novo iPython
+O ipython se tornou o Jupyter
+`pip install jupyter`
+```
+jupyter notebook
+```
 
 ## Painel do Admin
 
@@ -249,4 +267,44 @@ def [nome-da-variavel](request):
 <a class="dropdown-item" href="{% url 'catalog:category' slug=category.slug %}">{{ category }}</a>
 
 <a class="dropdown-item" href="{{ category.get_absolute_url }}">{{ category }}</a>
+```
+
+## Criando um arquivo de configurações locais
+### Em .gitignore
+Adicione o arquivo 'local_settings.py'
+
+### Crie o arquivo
+Na pasta raiz do projeto, crie o arquivo `local_settings.py`, com o seguinte conteúdo:
+```
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+DEBUG = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+```
+
+### Em settings.py
+No final do arquivo, adicione:
+```
+try:
+    from local_settings import *
+except ImportError:
+    pass
+```
+
+### Arquivo local_settings no remote
+Após configurar o arquivo `local_settings.py`, crie uma copia do mesmo e salve como `local_settings_example.py`.
+Este será mandado para o repositório remoto e servirá de exemplo para outros desenvolvedores do projeto.
+
+## Enviando emails
+
+### Alterações no arquivo settings.py
+```
+# E-mail
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = 'admin@[nome-do-projeto].com'
 ```
