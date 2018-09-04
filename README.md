@@ -155,6 +155,13 @@ _Você deve estar dentro da pasta onde o arquivo *.env* está_
 
 *******
 
+# Utilizando Variáveis de Ambiente
+
+## settings.py
+`SECRET_KEY = os.getenv('SECRET_KEY', '[default-value]')`
+
+*******
+
 # Testes
 
 ## Com o arquivo tests do Django

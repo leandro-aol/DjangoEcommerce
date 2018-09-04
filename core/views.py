@@ -9,7 +9,6 @@ class IndexView(TemplateView):
 
     template_name = 'core/index.html'
 
-index = IndexView.as_view()
 
 def contact(request):
     success = False
@@ -25,3 +24,6 @@ def contact(request):
     }
     
     return render(request, 'core/contact.html', context)
+
+
+index = IndexView.as_view()

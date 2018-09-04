@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from .views import (
-    products,
+    product_list,
     category,
     product,
 )
@@ -25,7 +25,7 @@ from .views import (
 app_name = 'catalog'
 
 urlpatterns = [
-    path('', products, name='products'),
+    path('', product_list, name='products'),
     path('<slug:slug>/', category, name='category'),
     path('produtos/<slug:slug>/', product, name='product'),
 ]

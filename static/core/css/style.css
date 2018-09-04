@@ -31,3 +31,22 @@ footer a {
 .dropdown-item:hover {
     background-color: #e7e8e9
 }
+
+.pagination {
+    margin-top: 1em
+}
+
+.page-link {
+    color: #fff;
+    background-color: #17a2b8;
+    border: 0 solid transparent
+}
+
+.page-link:hover {
+    color: #fff;
+    background-color: #138192
+}
+
+.page-item.active .page-link {
+    background-color: #138192;
+}
