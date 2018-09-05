@@ -143,9 +143,9 @@ STATICFILES_DIRS = [
 ]
 
 # Auth
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'core:index'
-LOGOUT_REDIRECT_URL = 'core:index'
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'accounts:index'
+LOGOUT_REDIRECT_URL = 'accounts:index'
 AUTH_USER_MODEL = 'accounts.User'
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

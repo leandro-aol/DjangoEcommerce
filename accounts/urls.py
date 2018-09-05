@@ -18,12 +18,18 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 from .views import (
     register,
+    index,
+    update_user,
 )
 
 app_name = 'accounts'
 
 urlpatterns = [
-    path('registrar/', register, name='register'),
+    path('', index, name='index'),
+
     path('entrar/', LoginView.as_view(template_name='accounts/login.html'), name='login'),
     path('sair/', LogoutView.as_view(), name='logout'),
+
+    path('registrar/', register, name='register'),
+    path('alterar-dados/', update_user, name='update_user'),
 ]

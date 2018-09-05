@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Minha Conta | {{ block.super }}
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Início</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Minha Conta</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active">Minha Conta</a>
+                <a href="{% url 'accounts:update_user' %}" class="list-group-item list-group-item-action">Alterar Dados</a>
+                <a href="#" class="list-group-item list-group-item-action">Alterar Senha</a>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            {% block accounts_container %}    
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

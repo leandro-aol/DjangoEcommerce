@@ -81,5 +81,5 @@ class LoginViewTestCase(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'registration/login.html')
         
-        error_msg = ('Por favor, entre com um Apelido / Usuário  e senha corretos. Note que ambos os campos diferenciam maiúsculas e minúsculas.')
+        error_msg = ('Por favor, entre com um Usuário  e senha corretos. Note que ambos os campos diferenciam maiúsculas e minúsculas.')
         self.assertFormError(response, 'form', None, error_msg)

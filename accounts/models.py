@@ -15,7 +15,7 @@ import re
 class User(AbstractBaseUser, PermissionsMixin):
 
     username = models.CharField(
-        'Apelido / Usuário',
+        'Usuário',
         max_length=30,
         unique=True,
         validators = [
