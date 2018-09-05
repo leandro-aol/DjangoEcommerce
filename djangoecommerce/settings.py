@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # apps
     'core',
     'catalog',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -141,9 +142,16 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-#LOGIN_URL = 'login'
-#LOGIN_REDIRECT_URL = 'core_index'
+# Auth
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'core:index'
 LOGOUT_REDIRECT_URL = 'core:index'
+AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend',
+)
+# ^^ Login por Facebook, Instagram, Google, etc...
 
 # E-mail config
 EMAIL_HOST = ''

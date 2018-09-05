@@ -47,12 +47,25 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'core:contact' %}">Contato</a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                                </li>
                             </ul>
                     
                             <ul class="navbar-nav navbar-right">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'admin:index' %}">Minha Conta</a>
-                                </li>
+                                {% if user.is_authenticated %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'accounts:logout' %}">Sair</a>
+                                    </li>
+                                {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'accounts:register' %}">Registrar</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'accounts:login' %}">Entrar</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </nav>

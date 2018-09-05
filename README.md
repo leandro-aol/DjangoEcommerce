@@ -159,7 +159,7 @@ _Você deve estar dentro da pasta onde o arquivo *.env* está_
 
 ## settings.py
 `SECRET_KEY = os.getenv('SECRET_KEY', '[default-value]')`
-`DEBUG = os.getenv('DEBUG', True)`
+`DEBUG = os.getenv('DEBUG', False)`
 
 ## Adicionar variável de ambiente no Heroku
 `heroku config:set SECRET_KEY='[valor-da-variável]'`
