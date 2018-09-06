@@ -29,6 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', '[default-value]')
 DEBUG = os.getenv('DEBUG', False)
 
 ALLOWED_HOSTS = [
+    'testserver',
     '127.0.0.1',
     'localhost',
     'ecodjango.herokuapp.com',

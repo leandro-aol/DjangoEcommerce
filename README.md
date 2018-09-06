@@ -31,10 +31,13 @@ local_settings.py
 ```
 
 ## Habilitar a execução de scripts no processo atual
+Get-ExecutionPolicy -List
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ## Criar e ativar um Ambiente Virtual
-* `python -m venv [nome-do-ambiente-virtual]` : _python -m venv venv_
+* `python -m venv [nome-do-ambiente-virtual]`
+    _python -m venv venv_
 * `.\venv\Scripts\activate`
 
 ## Atualizando o pip
