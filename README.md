@@ -197,11 +197,19 @@ Para ajudar no teste de models e views
 
 # Lembretes!
 
-## Você pode precisar de desabilitar o _collectstatic_
+## Heroku
+### Você pode precisar de desabilitar o _collectstatic_
 * heroku config:set DISABLE_COLLECTSTATIC=1
 
-## Alterando uma configuração específica
+### Alterando uma configuração específica
 * heroku config:set DEBUG=True
+
+### Resetar o banco de dados
+`heroku pg:reset DATABAS -a '[app-name]'`
+`git remote add heroku https://git.heroku.com/ecodjango.git`
+`git push heroku master`
+`heroku run python manage.py migrate`
+`heroku run python manage.py createsuperuser`
 
 ## Formulários
 

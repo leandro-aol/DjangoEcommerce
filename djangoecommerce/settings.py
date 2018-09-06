@@ -14,6 +14,7 @@ import os
 
 from decouple import config
 from dj_database_url import parse as dburl
+from django.contrib.messages import constants as message_constants
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'core',
     'catalog',
     'accounts',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -159,6 +161,15 @@ EMAIL_HOST = ''
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'admin@ecodjango.com'
+
+# Messages
+MESSAGE_TAGS = {
+    message_constants.DEBUG : 'debug',
+    message_constants.INFO : 'info',
+    message_constants.SUCCESS : 'success',
+    message_constants.WARNING : 'warning',
+    message_constants.ERROR : 'danger',
+}
 
 try:
     from local_settings import *

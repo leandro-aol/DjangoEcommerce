@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.views.generic import TemplateView
+from django.contrib import messages
 
 from .forms import ContactForm
 
@@ -17,6 +18,8 @@ def contact(request):
     if form.is_valid():
         form.send_mail()
         success = True
+    elif request.method == 'POST':
+        messages.error(request, 'Formulário inválido!')
     
     context = {
         'form' : form,
