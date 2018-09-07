@@ -52,6 +52,9 @@
                             <ul class="navbar-nav navbar-right">
                                 {% if user.is_authenticated %}
                                     <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'accounts:index' %}">Minha Conta</a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="nav-link" href="{% url 'accounts:logout' %}">Sair</a>
                                     </li>
                                 {% else %}
@@ -62,6 +65,10 @@
                                         <a class="nav-link" href="{% url 'accounts:login' %}">Entrar</a>
                                     </li>
                                 {% endif %}
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'checkout:cart_item' %}">Carrinho</a>
+                                </li>
                             </ul>
                         </div>
                     </nav>

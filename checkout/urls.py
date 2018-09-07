@@ -16,11 +16,15 @@ Including another URLconf
 from django.urls import path
 
 from .views import (
-    create_cartitem
+    create_cartitem,
+    cart_item,
+    checkout,
 )
 
 app_name = 'checkout'
 
 urlpatterns = [
     path('carrinho/adicionar/<slug:slug>/', create_cartitem, name='create_cartitem'),
+    path('carrinho/', cart_item, name='cart_item'),
+    path('finalizando/', checkout, name='checkout'),
 ]
