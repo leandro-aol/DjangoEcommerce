@@ -1,0 +1,58 @@
+{% extends 'accounts/index.html' %}
+
+{% load pagination %}
+
+{% block title %}
+    Meus Pedidos | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active" aria-current="page">Meus Pedidos</li>
+{% endblock %}
+
+{% block listGroupMenu %}
+    <a href="{% url 'accounts:index' %}" class="list-group-item list-group-item-action">Minha Conta</a>
+    <a href="{% url 'accounts:update_user' %}" class="list-group-item list-group-item-action">Alterar Dados</a>
+    <a href="{% url 'accounts:update_password' %}" class="list-group-item list-group-item-action">Alterar Senha</a>
+    <a href="{% url 'checkout:order_list' %}" class="list-group-item list-group-item-action active">Meus Pedidos</a>
+{% endblock %}
+
+{% block accounts_container %}
+    <table class="table table-bordered table-hover">
+        <caption>Meus pedidos</caption>
+
+        <thead class="thead-dark">
+            <th>ID</th>
+            <th>Produtos</th>
+            <th>Situação</th>
+            <th>Data</th>
+        </thead>
+
+        <tbody>
+            {% for order in object_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'checkout:order_detail' order.pk %}">#{{ order.pk }}</a>
+                    </td>
+                    <td>
+                        {% for product in order.products %}
+                            {{ product.name }}
+
+                            {% if not forloop.last %}
+                                <br>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {{ order.get_status_display }}
+                    </td>
+                    <td>
+                        {{ order.created|date:"d/M/Y" }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% pagination request paginator page_obj %}
+{% endblock %}

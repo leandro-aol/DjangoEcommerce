@@ -1,0 +1,56 @@
+{% extends 'accounts/index.html' %}
+
+{% block title %}
+    Pedido #{{ order.pk }} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'checkout:order_list' %}">Meus Pedidos</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Pedido #{{ order.pk }}</li>
+{% endblock %}
+
+{% block listGroupMenu %}
+    <a href="{% url 'accounts:index' %}" class="list-group-item list-group-item-action">Minha Conta</a>
+    <a href="{% url 'accounts:update_user' %}" class="list-group-item list-group-item-action">Alterar Dados</a>
+    <a href="{% url 'accounts:update_password' %}" class="list-group-item list-group-item-action">Alterar Senha</a>
+    <a href="{% url 'checkout:order_list' %}" class="list-group-item list-group-item-action active">Meus Pedidos</a>
+{% endblock %}
+
+{% block accounts_container %}
+    <dl class="row">
+        <dt class="col-sm-6 text-right">Total</dt>
+        <dd class="col-sm-6">R$ {{ object.total|floatformat:"2" }}</dd>
+
+        <dt class="col-sm-6 text-right">Situação</dt>
+        <dd class="col-sm-6">{{ object.get_status_display }}</dd>
+
+        <dt class="col-sm-6 text-right">Data</dt>
+        <dd class="col-sm-6">{{ object.created|date:"d/M/Y H:i" }}</dd>
+
+        <dt class="col-sm-6 text-right">Meio de Pagamento</dt>
+        <dd class="col-sm-6">{{ object.get_payment_option_display }}</dd>
+    </dl>
+
+    <br>
+
+    <h3>Itens do Pedido</h3>
+    <table class="table table-bordered table-striped table-sm">
+        <caption>Detalhes do pedido</caption>
+
+        <thead class="thead-dark">
+            <th>Produto</th>
+            <th class="text-center">Quantidade</th>
+            <th>Preço</th>
+        </thead>
+        
+        <tbody>
+            {% for item in object.items.all %}
+                <tr>
+                    <td>{{ item.product }}</td>
+                    <td class="text-center">{{ item.quantity }}</td>
+                    <td>R$ {{ item.price|floatformat:"2" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

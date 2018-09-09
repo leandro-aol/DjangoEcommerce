@@ -16,8 +16,16 @@ footer li {
     margin-bottom: 1.1em
 }
 
-footer a {
+a {
     color: #18BC9C
+}
+
+a:hover {
+    color: #18BC9C;
+}
+
+footer .nav-link:hover {
+    text-decoration: underline
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -49,10 +57,6 @@ footer a {
 
 .page-item.active .page-link {
     background-color: #138192
-}
-
-.breadcrumb-item a {
-    color: #18BC9C
 }
 
 .list-group-item.active {

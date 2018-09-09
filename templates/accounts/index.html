@@ -9,8 +9,10 @@
         <div class="col">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Início</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Minha Conta</li>
+                    <li class="breadcrumb-item"><a href="{% url 'accounts:index' %}">Início</a></li>
+                    {% block breadcrumb %}
+                        <li class="breadcrumb-item active" aria-current="page">Minha Conta</li>
+                    {% endblock %}
                 </ol>
             </nav>
         </div>
@@ -19,15 +21,34 @@
     <div class="row">
         <div class="col-md-4">
             <div class="list-group">
-                <a href="{% url 'accounts:index' %}" class="list-group-item list-group-item-action active">Minha Conta</a>
-                <a href="{% url 'accounts:update_user' %}" class="list-group-item list-group-item-action">Alterar Dados</a>
-                <a href="{% url 'accounts:update_password' %}" class="list-group-item list-group-item-action">Alterar Senha</a>
+                {% block listGroupMenu %}
+                    <a href="{% url 'accounts:index' %}" class="list-group-item list-group-item-action active">Minha Conta</a>
+                    <a href="{% url 'accounts:update_user' %}" class="list-group-item list-group-item-action">Alterar Dados</a>
+                    <a href="{% url 'accounts:update_password' %}" class="list-group-item list-group-item-action">Alterar Senha</a>
+                    <a href="{% url 'checkout:order_list' %}" class="list-group-item list-group-item-action">Meus Pedidos</a>
+                {% endblock %}
             </div>
         </div>
 
         <div class="col-md-8">
             {% block accounts_container %}   
-                <h2>Bem vindo, {{ user.username|capfirst }}!</h2> 
+                <h2>Bem vindo, {{ user.name|truncatewords:1 }}</h2>
+
+                <br><br>
+
+                <dl class="row">
+                    <dt class="col-sm-3 text-right">Nome</dt>
+                    <dd class="col-sm-9">{{ user.name }}</dd>
+            
+                    <dt class="col-sm-3 text-right">E-mail</dt>
+                    <dd class="col-sm-9">{{ user.email }}</dd>
+            
+                    <dt class="col-sm-3 text-right">Usuário</dt>
+                    <dd class="col-sm-9">{{ user.username }}</dd>
+            
+                    <dt class="col-sm-3 text-right">Membro desde:</dt>
+                    <dd class="col-sm-9">{{ user.date_joined }}</dd>
+                </dl>
             {% endblock %}
         </div>
     </div>

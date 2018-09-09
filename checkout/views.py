@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import RedirectView, TemplateView, ListView, DetailView
 from django.forms import modelformset_factory
 from django.contrib import messages
 from django.urls import reverse
@@ -34,18 +34,17 @@ class CreateCartItemView(RedirectView):
 
 
 class CartItemView(TemplateView):
-    
-    template_name = 'checkout/cart.html'
 
+    template_name = 'checkout/cart.html'
 
 
     def get_formset(self, clear=False):
         CartItemFormSet = modelformset_factory(
-                CartItem,
-                fields=('quantity',),
-                can_delete=True,
-                extra=0,
-            )
+            CartItem,
+            fields=('quantity',),
+            can_delete=True,
+            extra=0,
+        )
 
         session_key = self.request.session.session_key
 
@@ -63,9 +62,9 @@ class CartItemView(TemplateView):
         return formset
 
     def get_context_data(self, **kwargs):
-            context = super(CartItemView, self).get_context_data(**kwargs)
-            context['formset'] = self.get_formset()
-            return context
+        context = super(CartItemView, self).get_context_data(**kwargs)
+        context['formset'] = self.get_formset()
+        return context
 
     def post(self, request, *args, **kwargs):
         formset = self.get_formset()
@@ -75,7 +74,7 @@ class CartItemView(TemplateView):
             formset.save()
             messages.success(request, 'Carrinho atualizado com sucesso!')
             context['formset'] = self.get_formset(clear=True)
-        
+
         return self.render_to_response(context)
 
 
@@ -92,10 +91,32 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
         else:
             messages.info(request, 'Não há itens no carrinho de compras!')
             return redirect('checkout:cart_item')
-        
-        return super(CheckoutView, self).get(request, *args, **kwargs)
+
+        response = super(CheckoutView, self).get(request, *args, **kwargs)
+        response.context_data['order'] = order
+
+        return response
+
+
+class OrderListView(LoginRequiredMixin, ListView):
+
+    template_name = 'checkout/order_list.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
+
+
+class OrderDetailView(LoginRequiredMixin, DetailView):
+    
+    template_name = 'checkout/order_detail.html'
+    
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
 
 
 create_cartitem = CreateCartItemView.as_view()
 cart_item = CartItemView.as_view()
 checkout = CheckoutView.as_view()
+order_list = OrderListView.as_view()
+order_detail = OrderDetailView.as_view()

@@ -6,9 +6,18 @@
     Alterar Dados | {{ block.super }}
 {% endblock %}
 
-{% block accounts_container %}
-    <h2>Alterar Dados</h2>
+{% block breadcrumb %}
+    <li class="breadcrumb-item active" aria-current="page">Alterar Dados</li>
+{% endblock %}
 
+{% block listGroupMenu %}
+    <a href="{% url 'accounts:index' %}" class="list-group-item list-group-item-action">Minha Conta</a>
+    <a href="{% url 'accounts:update_user' %}" class="list-group-item list-group-item-action active">Alterar Dados</a>
+    <a href="{% url 'accounts:update_password' %}" class="list-group-item list-group-item-action">Alterar Senha</a>
+    <a href="{% url 'checkout:order_list' %}" class="list-group-item list-group-item-action">Meus Pedidos</a>
+{% endblock %}
+
+{% block accounts_container %}
     <form action="" method="POST">
         {% csrf_token %}
 

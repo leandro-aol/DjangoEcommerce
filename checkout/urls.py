@@ -19,6 +19,8 @@ from .views import (
     create_cartitem,
     cart_item,
     checkout,
+    order_list,
+    order_detail,
 )
 
 app_name = 'checkout'
@@ -27,4 +29,6 @@ urlpatterns = [
     path('carrinho/adicionar/<slug:slug>/', create_cartitem, name='create_cartitem'),
     path('carrinho/', cart_item, name='cart_item'),
     path('finalizando/', checkout, name='checkout'),
+    path('meus-pedidos/', order_list, name='order_list'),
+    path('meus-pedidos/<int:pk>', order_detail, name='order_detail'),
 ]
